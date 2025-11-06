@@ -60,11 +60,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const darkModeToggle = document.getElementById('darkModeToggle');
 const body = document.body;
 
-// Check for saved dark mode preference in localStorage
-const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+// Check for saved mode preference in localStorage
+const savedMode = localStorage.getItem('darkMode');
 
-// Apply dark mode if previously enabled
-if (isDarkMode) {
+// Apply dark mode by default, unless user explicitly disabled it
+if (savedMode === 'disabled') {
+    // User has explicitly chosen light mode
+    body.classList.remove('dark-mode');
+} else {
+    // Default to dark mode (either first visit or user enabled it)
     body.classList.add('dark-mode');
 }
 
