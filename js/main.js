@@ -81,3 +81,79 @@ if (darkModeToggle) {
         }
     });
 }
+
+// Intersection Observer for scroll animations
+const observerOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('reveal');
+        }
+    });
+}, observerOptions);
+
+// Observe pillar cards
+document.querySelectorAll('.pillar-card').forEach(card => {
+    observer.observe(card);
+});
+
+// Parallax effect for hero watermark
+const heroWatermark = document.querySelector('.hero-logo-watermark');
+if (heroWatermark) {
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const heroHeight = document.querySelector('.hero').offsetHeight;
+
+        // Only apply parallax within hero section
+        if (scrolled < heroHeight) {
+            const parallaxSpeed = 0.5;
+            heroWatermark.style.transform = `translate(-50%, calc(-50% + ${scrolled * parallaxSpeed}px))`;
+        }
+    });
+}
+
+// Copy to clipboard for email
+const emailLinks = document.querySelectorAll('.contact-link[href^="mailto:"]');
+emailLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const email = link.getAttribute('href').replace('mailto:', '');
+
+        // Copy to clipboard
+        navigator.clipboard.writeText(email).then(() => {
+            // Add copied class for visual feedback
+            link.classList.add('copied');
+
+            // Remove class after animation
+            setTimeout(() => {
+                link.classList.remove('copied');
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy email:', err);
+        });
+    });
+});
+
+// Image lazy loading with fade-in effect
+const images = document.querySelectorAll('img');
+
+images.forEach(img => {
+    // If image is already loaded (cached)
+    if (img.complete) {
+        img.classList.add('loaded');
+    } else {
+        // Add loaded class when image loads
+        img.addEventListener('load', () => {
+            img.classList.add('loaded');
+        });
+
+        // Handle loading errors gracefully
+        img.addEventListener('error', () => {
+            img.classList.add('loaded');
+        });
+    }
+});
