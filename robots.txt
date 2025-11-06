@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /.git
+Disallow: /.claude
+
+Sitemap: https://salonuluniversitar.com/sitemap.xml
