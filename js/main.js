@@ -28,12 +28,19 @@ navLinks.forEach(link => {
     });
 });
 
-// Navbar scroll effect
+// Navbar scroll effect - optimized with requestAnimationFrame
+let navbarTicking = false;
 window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+    if (!navbarTicking) {
+        window.requestAnimationFrame(() => {
+            if (window.pageYOffset > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            navbarTicking = false;
+        });
+        navbarTicking = true;
     }
 });
 
@@ -108,14 +115,33 @@ document.querySelectorAll('.pillar-card').forEach(card => {
 // Parallax effect for hero watermark
 const heroWatermark = document.querySelector('.hero-logo-watermark');
 if (heroWatermark) {
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const heroHeight = document.querySelector('.hero').offsetHeight;
+    const heroSection = document.querySelector('.hero');
+    // Cache hero height to avoid forced reflow on every scroll
+    let heroHeight = heroSection ? heroSection.offsetHeight : 0;
 
-        // Only apply parallax within hero section
-        if (scrolled < heroHeight) {
-            const parallaxSpeed = 0.5;
-            heroWatermark.style.transform = `translate(-50%, calc(-50% + ${scrolled * parallaxSpeed}px))`;
+    // Recalculate on window resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            heroHeight = heroSection ? heroSection.offsetHeight : 0;
+        }, 250);
+    });
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const scrolled = window.pageYOffset;
+
+                // Only apply parallax within hero section
+                if (scrolled < heroHeight) {
+                    const parallaxSpeed = 0.5;
+                    heroWatermark.style.transform = `translate(-50%, calc(-50% + ${scrolled * parallaxSpeed}px))`;
+                }
+                ticking = false;
+            });
+            ticking = true;
         }
     });
 }
