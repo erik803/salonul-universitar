@@ -1,7 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(cd:*)",
+      "Bash(while read file)",
+      "Bash(do wc -l:*)",
+      "Bash(done)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nUpdate social media links and fix team member name\n\n- Add TikTok link to contact section linking to https://www.tiktok.com/@salonuluniversitar\n- Update social media text labels to \"Our Instagram\" and \"Our TikTok\" for consistency\n- Fix team member name from \"Brianna Țancău\" to \"Brianna Tancău\"\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")"
     ],
     "deny": [],
     "ask": []
