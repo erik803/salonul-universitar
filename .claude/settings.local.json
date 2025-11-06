@@ -11,7 +11,8 @@
       "Bash(git push:*)",
       "Bash(git pull:*)",
       "Bash(git commit -m \"$(cat <<''EOF''\nAdd SEO enhancements: sitemap.xml, robots.txt, and meta tags\n\n- Create sitemap.xml for better search engine indexing\n- Add robots.txt to guide crawler behavior\n- Add Open Graph meta tags for social media sharing\n- Add Twitter Card meta tags for better link previews\n- Add comprehensive meta descriptions and keywords\n- Add canonical URL and author metadata\n- Improve overall SEO for better search visibility\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git rm:*)"
     ],
     "deny": [],
     "ask": []

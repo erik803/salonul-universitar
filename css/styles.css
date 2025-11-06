@@ -54,6 +54,20 @@ body {
     --transition: 0.3s ease;
 }
 
+/* Dark Mode Colors */
+body.dark-mode {
+    --color-primary: #FFFFFF;
+    --color-secondary: #0F1419;
+    --color-light: #1A2332;
+    --color-accent: #3A5F8F;
+    --color-text: #E8E8E8;
+    --color-text-light: #B8B8B8;
+    --color-border: #2A3544;
+
+    background-color: #0F1419;
+    color: #E8E8E8;
+}
+
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
@@ -202,6 +216,55 @@ ul {
     height: 2px;
     background-color: var(--color-primary);
     transition: all var(--transition);
+}
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: 2px solid var(--color-border);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all var(--transition);
+    position: relative;
+}
+
+.dark-mode-toggle:hover {
+    background-color: rgba(10, 31, 58, 0.1);
+    border-color: var(--color-accent);
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+    background-color: rgba(58, 95, 143, 0.2);
+}
+
+.dark-mode-toggle svg {
+    position: absolute;
+    transition: all var(--transition);
+}
+
+.dark-mode-toggle .sun-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+.dark-mode-toggle .moon-icon {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0);
+}
+
+body.dark-mode .dark-mode-toggle .sun-icon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0);
+}
+
+body.dark-mode .dark-mode-toggle .moon-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
 }
 
 /* Hero Section */
@@ -730,6 +793,117 @@ ul {
 .footer-logo:not([src]),
 .footer-logo[src*="logo.png"]:not([complete]) {
     display: none;
+}
+
+/* Dark Mode Specific Overrides */
+body.dark-mode .navbar {
+    background: linear-gradient(to bottom, rgba(15, 20, 25, 0.98), rgba(20, 28, 36, 0.95));
+    border-bottom-color: var(--color-border);
+}
+
+body.dark-mode .navbar.scrolled {
+    background: linear-gradient(to bottom, rgba(15, 20, 25, 0.98), rgba(18, 24, 30, 0.98));
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .hero {
+    background:
+        radial-gradient(circle at 20% 50%, rgba(58, 95, 143, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(58, 95, 143, 0.1) 0%, transparent 50%),
+        linear-gradient(135deg, #0F1419 0%, #1A2332 50%, #0F1419 100%);
+}
+
+body.dark-mode .hero-title {
+    background: linear-gradient(135deg, #FFFFFF 0%, #7FA8D6 30%, #3A5F8F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body.dark-mode .intro-section {
+    background: linear-gradient(to bottom, #0F1419 0%, #141C24 100%);
+}
+
+body.dark-mode .pillars-section {
+    background:
+        radial-gradient(circle at 90% 20%, rgba(58, 95, 143, 0.08) 0%, transparent 40%),
+        linear-gradient(to bottom, #1A2332 0%, #151E2B 100%);
+}
+
+body.dark-mode .pillar-card {
+    background: linear-gradient(135deg, #1A2332 0%, #1E2938 100%);
+    border-color: var(--color-border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .pillar-card::before {
+    background: linear-gradient(90deg, transparent 0%, #3A5F8F 50%, transparent 100%);
+}
+
+body.dark-mode .pillar-card:hover {
+    box-shadow: 0 8px 20px rgba(58, 95, 143, 0.3);
+}
+
+body.dark-mode .methodology-section {
+    background: linear-gradient(to bottom, #141C24 0%, #0F1419 100%);
+}
+
+body.dark-mode .methodology-box {
+    background:
+        linear-gradient(135deg, rgba(58, 95, 143, 0.1) 0%, transparent 100%),
+        linear-gradient(135deg, #1A2332 0%, #151E2B 100%);
+    border-color: var(--color-border);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .methodology-box::before {
+    background: linear-gradient(90deg, transparent 0%, #3A5F8F 50%, transparent 100%);
+}
+
+body.dark-mode .team-section {
+    background:
+        radial-gradient(circle at 10% 30%, rgba(58, 95, 143, 0.08) 0%, transparent 40%),
+        linear-gradient(to bottom, #151E2B 0%, #1A2332 100%);
+}
+
+body.dark-mode .member-placeholder {
+    background:
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+        linear-gradient(135deg, #3A5F8F 0%, #1E3A5F 70%, #0A1F3A 100%);
+    border-color: var(--color-border);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .team-member:hover .member-placeholder {
+    box-shadow: 0 8px 20px rgba(58, 95, 143, 0.5);
+}
+
+body.dark-mode .contact-section {
+    background:
+        radial-gradient(circle at 80% 50%, rgba(58, 95, 143, 0.08) 0%, transparent 50%),
+        linear-gradient(to bottom, #0F1419 0%, #141C24 100%);
+}
+
+body.dark-mode .contact-content {
+    background: linear-gradient(135deg, #1A2332 0%, #1E2938 100%);
+    border-color: var(--color-border);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .contact-link:hover {
+    background-color: rgba(58, 95, 143, 0.2);
+}
+
+body.dark-mode .section-title {
+    background: linear-gradient(135deg, #FFFFFF 0%, #B8B8B8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body.dark-mode .section-title::after {
+    background: linear-gradient(90deg, transparent 0%, #3A5F8F 20%, #3A5F8F 80%, transparent 100%);
+    box-shadow: 0 2px 8px rgba(58, 95, 143, 0.5);
 }
 
 /* Animations */
