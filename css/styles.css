@@ -660,8 +660,8 @@ body.dark-mode .dark-mode-toggle .moon-icon {
 
 /* Footer */
 .footer {
-    background: linear-gradient(to bottom, #1a1a1a 0%, var(--color-primary) 100%);
-    color: var(--color-secondary);
+    background: linear-gradient(to bottom, #1a1a1a 0%, #000000 100%);
+    color: #FFFFFF;
     padding: var(--spacing-3xl) 0 var(--spacing-lg);
     border-top: 1px solid rgba(10, 31, 58, 0.4);
 }
@@ -687,7 +687,7 @@ body.dark-mode .dark-mode-toggle .moon-icon {
 .footer-title {
     font-size: 1rem;
     font-weight: 600;
-    color: var(--color-secondary);
+    color: #FFFFFF;
     text-transform: uppercase;
     letter-spacing: 1px;
     margin: 0;
@@ -716,7 +716,7 @@ body.dark-mode .dark-mode-toggle .moon-icon {
 }
 
 .footer-links li a:hover {
-    color: var(--color-accent);
+    color: #0A1F3A;
 }
 
 .footer-contact {
@@ -737,7 +737,7 @@ body.dark-mode .dark-mode-toggle .moon-icon {
 }
 
 .footer-contact a:hover {
-    color: var(--color-accent);
+    color: #0A1F3A;
 }
 
 .footer-social {
@@ -753,13 +753,13 @@ body.dark-mode .dark-mode-toggle .moon-icon {
     height: 36px;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.1);
-    color: var(--color-secondary);
+    color: #FFFFFF;
     transition: background-color var(--transition), color var(--transition);
 }
 
 .footer-social-link:hover {
-    background-color: var(--color-accent);
-    color: var(--color-secondary);
+    background-color: #0A1F3A;
+    color: #FFFFFF;
 }
 
 .footer-bottom {
