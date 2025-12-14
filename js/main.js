@@ -67,6 +67,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const darkModeToggle = document.getElementById('darkModeToggle');
 const body = document.body;
 
+// Logo elements
+const navLogo = document.querySelector('.logo-img');
+const heroLogo = document.querySelector('.hero-logo');
+
+// Function to update logos based on theme
+function updateLogos() {
+    const isDarkMode = body.classList.contains('dark-mode');
+    const logoPath = isDarkMode ? 'assets/logo/logo-white.png' : 'assets/logo/logo-light.png';
+
+    if (navLogo) navLogo.src = logoPath;
+    if (heroLogo) heroLogo.src = logoPath;
+}
+
 // Check for saved mode preference in localStorage
 const savedMode = localStorage.getItem('darkMode');
 
@@ -79,6 +92,9 @@ if (savedMode === 'disabled') {
     body.classList.add('dark-mode');
 }
 
+// Update logos on page load
+updateLogos();
+
 // Toggle dark mode on button click
 if (darkModeToggle) {
     darkModeToggle.addEventListener('click', () => {
@@ -90,6 +106,9 @@ if (darkModeToggle) {
         } else {
             localStorage.setItem('darkMode', 'disabled');
         }
+
+        // Update logos when toggling theme
+        updateLogos();
     });
 }
 

@@ -394,13 +394,22 @@ body.dark-mode .dark-mode-toggle .moon-icon {
     height: auto;
     max-width: 80vw;
     object-fit: contain;
-    filter: grayscale(100%);
     opacity: 0;
-    transition: opacity 0.6s ease;
+    transition: opacity 0.6s ease, filter 0.3s ease;
 }
 
 .hero-logo.loaded {
     opacity: 0.25;
+}
+
+/* Light mode: grayscale filter for darker logo */
+body:not(.dark-mode) .hero-logo {
+    filter: grayscale(100%);
+}
+
+/* Dark mode: no filter for white logo */
+body.dark-mode .hero-logo {
+    filter: none;
 }
 
 .hero-container {
@@ -476,7 +485,7 @@ body.dark-mode .dark-mode-toggle .moon-icon {
     font-family: var(--font-body);
     font-size: 1rem;
     line-height: 1.9;
-    text-align: left;
+    text-align: justify;
     color: var(--color-text);
     letter-spacing: 0.3px;
 }
