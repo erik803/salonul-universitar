@@ -2,6 +2,33 @@
  * Salonul Universitar - Main JavaScript
  */
 
+// Loading Screen
+const loadingScreen = document.getElementById('loadingScreen');
+
+// Hide loading screen when page is fully loaded
+window.addEventListener('load', () => {
+    // Small delay to ensure smooth transition
+    setTimeout(() => {
+        if (loadingScreen) {
+            loadingScreen.classList.add('hidden');
+            // Remove from DOM after transition completes
+            setTimeout(() => {
+                loadingScreen.remove();
+            }, 500);
+        }
+    }, 300);
+});
+
+// Fallback: Hide loader after 3 seconds even if load event doesn't fire
+setTimeout(() => {
+    if (loadingScreen && !loadingScreen.classList.contains('hidden')) {
+        loadingScreen.classList.add('hidden');
+        setTimeout(() => {
+            loadingScreen.remove();
+        }, 500);
+    }
+}, 3000);
+
 // Navigation
 const navbar = document.getElementById('navbar');
 const navToggle = document.getElementById('navToggle');
