@@ -131,40 +131,6 @@ document.querySelectorAll('.pillar-card').forEach(card => {
     observer.observe(card);
 });
 
-// Parallax effect for hero watermark
-const heroWatermark = document.querySelector('.hero-logo-watermark');
-if (heroWatermark) {
-    const heroSection = document.querySelector('.hero');
-    // Cache hero height to avoid forced reflow on every scroll
-    let heroHeight = heroSection ? heroSection.offsetHeight : 0;
-
-    // Recalculate on window resize
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-            heroHeight = heroSection ? heroSection.offsetHeight : 0;
-        }, 250);
-    });
-
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                const scrolled = window.pageYOffset;
-
-                // Only apply parallax within hero section
-                if (scrolled < heroHeight) {
-                    const parallaxSpeed = 0.5;
-                    heroWatermark.style.transform = `translate(-50%, calc(-50% + ${scrolled * parallaxSpeed}px))`;
-                }
-                ticking = false;
-            });
-            ticking = true;
-        }
-    });
-}
-
 // Copy to clipboard for email
 const emailLinks = document.querySelectorAll('.contact-link[href^="mailto:"]');
 emailLinks.forEach(link => {
