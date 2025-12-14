@@ -517,9 +517,16 @@ body.dark-mode .dark-mode-toggle .moon-icon {
     font-family: var(--font-body);
     font-size: 1rem;
     line-height: 1.9;
-    text-align: justify;
+    text-align: left;
     color: var(--color-text);
     letter-spacing: 0.3px;
+}
+
+/* Justified text only on larger screens */
+@media (min-width: 769px) {
+    .intro-text {
+        text-align: justify;
+    }
 }
 
 /* Pillars Section */
