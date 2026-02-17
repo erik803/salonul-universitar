@@ -441,9 +441,10 @@ body.dark-mode .dark-mode-toggle .moon-icon {
 }
 
 .hero-subtitle {
-    font-family: var(--font-body);
-    font-size: 1rem;
-    color: var(--color-text-light);
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--color-accent);
     margin-bottom: var(--spacing-xl);
     animation: fadeInUp 0.8s ease 0.4s both;
     letter-spacing: 1px;
