@@ -90,54 +90,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Dark Mode Toggle
-const darkModeToggle = document.getElementById('darkModeToggle');
-const body = document.body;
-
-// Logo elements
-const navLogo = document.querySelector('.logo-img');
-const heroLogo = document.querySelector('.hero-logo');
-
-// Function to update logos based on theme
-function updateLogos() {
-    const isDarkMode = body.classList.contains('dark-mode');
-    const logoPath = isDarkMode ? 'assets/logo/logo-white.png' : 'assets/logo/logo-light.png';
-
-    if (navLogo) navLogo.src = logoPath;
-    if (heroLogo) heroLogo.src = logoPath;
-}
-
-// Check for saved mode preference in localStorage
-const savedMode = localStorage.getItem('darkMode');
-
-// Apply dark mode by default, unless user explicitly disabled it
-if (savedMode === 'disabled') {
-    // User has explicitly chosen light mode
-    body.classList.remove('dark-mode');
-} else {
-    // Default to dark mode (either first visit or user enabled it)
-    body.classList.add('dark-mode');
-}
-
-// Update logos on page load
-updateLogos();
-
-// Toggle dark mode on button click
-if (darkModeToggle) {
-    darkModeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-
-        // Save preference to localStorage
-        if (body.classList.contains('dark-mode')) {
-            localStorage.setItem('darkMode', 'enabled');
-        } else {
-            localStorage.setItem('darkMode', 'disabled');
-        }
-
-        // Update logos when toggling theme
-        updateLogos();
-    });
-}
+// Ensure light mode (dark mode disabled for this seasonal design)
+document.body.classList.remove('dark-mode');
+localStorage.setItem('darkMode', 'disabled');
 
 // Intersection Observer for scroll animations
 const observerOptions = {
